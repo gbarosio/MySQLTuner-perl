@@ -217,7 +217,7 @@ sub os_setup {
 			$physical_memory = `free -b | grep Mem | awk '{print \$2}'` or memerror;
 			$swap_memory = `free -b | grep Swap | awk '{print \$2}'` or memerror;
 		} elsif ($os =~ /Darwin/) {
-			$physical_memory = `sysctl -n hw.memsize` or memerror;
+			$physical_memory = `sysctl hw.memsize` or memerror;
 			$swap_memory = `sysctl -n vm.swapusage | awk '{print \$3}' | sed 's/\..*\$//'` or memerror;
 		} elsif ($os =~ /NetBSD|OpenBSD/) {
 			$physical_memory = `sysctl -n hw.physmem` or memerror;
